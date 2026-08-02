@@ -1,0 +1,75 @@
+generated: '2026-07-21'
+method: searched
+source: https://www.npmjs.com/org/waxio
+notes: >-
+  First-party client libraries and developer tooling published under the
+  official @waxio npm scope by Worldwide Asset eXchange
+  (github.com/worldwide-asset-exchange). No first-party PyPI / Maven / NuGet /
+  crates.io / RubyGems packages found; third-party Antelope libraries (e.g.
+  pyntelope) exist but are not authored by WAX.
+packages:
+  - language: javascript
+    registry: npm
+    name: "@waxio/waxjs"
+    version: 1.7.1
+    url: https://www.npmjs.com/package/@waxio/waxjs
+    repository: https://github.com/worldwide-asset-exchange/waxjs
+    install: npm install @waxio/waxjs
+    description: JavaScript API for integration with the WAX Cloud Wallet (login, transact, RPC).
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/sdk-react-native"
+    version: 0.3.0
+    url: https://www.npmjs.com/package/@waxio/sdk-react-native
+    install: npm install @waxio/sdk-react-native
+    description: React Native SDK for WAX Cloud Wallet integration.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/waxunit"
+    version: 1.1.2
+    url: https://www.npmjs.com/package/@waxio/waxunit
+    install: npm install @waxio/waxunit
+    description: WAX blockchain smart-contract unit testing framework.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/vert"
+    version: 2.1.1
+    url: https://www.npmjs.com/package/@waxio/vert
+    install: npm install @waxio/vert
+    description: Testing library for WAX and Vaulta smart contracts.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/eosio-statereceiver"
+    version: 4.0.3
+    url: https://www.npmjs.com/package/@waxio/eosio-statereceiver
+    install: npm install @waxio/eosio-statereceiver
+    description: State-receiver module for connecting to the Antelope State History Plugin.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/rsa-threshold-signatures"
+    version: 1.3.0
+    url: https://www.npmjs.com/package/@waxio/rsa-threshold-signatures
+    install: npm install @waxio/rsa-threshold-signatures
+    description: RSA threshold signatures library (used by the WAX RNG oracle).
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/eosjs-ecc-native"
+    version: 5.1.1
+    url: https://www.npmjs.com/package/@waxio/eosjs-ecc-native
+    install: npm install @waxio/eosjs-ecc-native
+    description: Elliptic-curve cryptography functions for WAX/Antelope keys and signing.
+    official: true
+  - language: javascript
+    registry: npm
+    name: "@waxio/widget-marketplace"
+    version: 0.5.0
+    url: https://www.npmjs.com/package/@waxio/widget-marketplace
+    install: npm install @waxio/widget-marketplace
+    description: vIRL Marketplace embeddable widget.
+    official: true

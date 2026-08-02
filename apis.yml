@@ -1,8 +1,28 @@
 aid: wax
+accessModel:
+  pricing: unknown
+  onboarding: unknown
+  trial: false
+  try_now: false
+  public: false
+  label: Unknown
+  confidence: low
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/wax.png
 name: WAX
-description: 'WAX is a company surfaced as a portfolio company of pantera-capital and added to the API
-  Evangelist network as a stub for enrichment. Sector: crypto. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  WAX (Worldwide Asset eXchange) is a purpose-built, carbon-neutral layer-1
+  blockchain and protocol token for NFTs, blockchain gaming, and e-commerce,
+  built as an Antelope (EOSIO fork) chain. Developers build dApps against the
+  public Antelope Chain API (/v1/chain/*) and the Hyperion History API, and
+  integrate the WAX Cloud Wallet through the official @waxio JavaScript SDKs
+  (waxjs, sdk-react-native). Read RPC endpoints are unauthenticated; state
+  changes are authorized by client-side secp256k1 transaction signatures rather
+  than API keys or OAuth. WAX also operates microservices such as WAX Cloud
+  Wallet, the WAX RNG oracle, and vIRL. Backed by Pantera Capital.
 url: https://raw.githubusercontent.com/api-evangelist/wax/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -12,11 +32,36 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Crypto
-apis: []
+- Blockchain
+- NFT
+- Web3
+- Gaming
+- Antelope
+- Wallet
+apis:
+- name: WAX Chain API (Antelope RPC)
+  description: >-
+    Public Antelope/EOSIO Chain API for the WAX blockchain — query chain state
+    (get_info, get_account, get_table_rows, get_currency_balance) and submit
+    signed transactions (push_transaction/send_transaction). Read endpoints are
+    unauthenticated JSON-over-HTTP POST. Served by independent WAX
+    infrastructure/block-producer nodes; wax.greymass.com is a documented public
+    endpoint.
+  humanURL: https://docs.wax.io/
+  baseURL: https://wax.greymass.com
+  properties:
+  - type: Documentation
+    url: https://docs.wax.io/
+- name: WAX Hyperion History API
+  description: >-
+    Hyperion full-history API for the WAX chain — query historical actions,
+    transactions, and state deltas at /v1/history/* and /v2/*.
+  humanURL: https://docs.wax.io/operate/wax-hyperion/wax-running-hyperion
+  baseURL: https://wax.eosphere.io
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -25,3 +70,44 @@ maintainers:
 common:
 - type: Website
   url: https://wax.io/
+- type: DeveloperPortal
+  url: https://docs.wax.io/
+- type: Documentation
+  url: https://docs.wax.io/
+- type: APIReference
+  url: https://docs.wax.io/build/dapp-development/
+- type: GettingStarted
+  url: https://docs.wax.io/learn/about-wax/
+- type: GitHubOrganization
+  url: https://github.com/worldwide-asset-exchange
+- type: Blog
+  url: https://medium.com/wax-io
+- type: StatusPage
+  url: https://status.wax.io
+- type: SignUp
+  url: https://all-access.wax.io
+- type: TermsOfService
+  url: https://www.wax.io/wcw-tos/
+- type: PrivacyPolicy
+  url: https://www.wax.io/privacy-policy/
+- type: Packages
+  url: packages/wax-packages.yml
+- type: SDKs
+  url: packages/wax-packages.yml
+- type: Authentication
+  url: authentication/wax-authentication.yml
+- type: Conventions
+  url: conventions/wax-conventions.yml
+- type: Conformance
+  url: conformance/wax-conformance.yml
+- type: Lifecycle
+  url: lifecycle/wax-lifecycle.yml
+- type: DomainSecurity
+  url: security/wax-domain-security.yml
+- type: LLMsTxt
+  url: llms/wax-llms.txt
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 7
+  pass: local-v1

@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wax.io/ , https://hyperion.docs.eosrio.io/ , Antelope Chain API (v1)
+notes: >-
+  Cross-cutting request/response semantics for the WAX (Antelope/EOSIO fork)
+  RPC surface. Derived from the public Chain API and Hyperion History API
+  conventions; no OpenAPI is captured in this repo yet. WAX exposes no
+  idempotency-key header (blockchain de-duplicates by signed transaction id and
+  TAPoS expiry, not by a client idempotency key), so no Idempotency pointer is
+  emitted.
+authentication:
+  style: none-for-reads / cryptographic-signature-for-writes
+  detail: See authentication/wax-authentication.yml
+transport:
+  protocol: JSON over HTTP
+  chain_api_method: POST
+  chain_api_content_type: application/json
+  request_body: 'JSON object of named parameters (e.g. account_name, code, scope, table)'
+  response_body: JSON object
+idempotency:
+  supported: false
+  mechanism: >-
+    No idempotency-key header. Duplicate submission of the same signed
+    transaction is rejected by the chain via the transaction id and the
+    reference-block (TAPoS) / expiration window; a transaction is valid for a
+    bounded time and cannot be replayed after expiry or after inclusion.
+pagination:
+  chain_api:
+    style: bounded-range
+    params: [lower_bound, upper_bound, limit]
+    response_fields: [rows, more, next_key]
+    detail: >-
+      Table queries (get_table_rows) page with lower_bound/upper_bound + limit;
+      the response carries `more` (bool) and `next_key` to resume.
+  hyperion_history:
+    style: skip-limit
+    params: [skip, limit]
+    response_fields: [total, actions]
+    detail: Hyperion history/actions endpoints page with skip + limit.
+versioning:
+  scheme: uri-path
+  chain_api: /v1/chain/*
+  history_api: /v1/history/* and Hyperion /v2/*
+  server_version: v5.0.1wax01 (Antelope Spring, WAX build; observed 2026-07-21)
+error_envelope:
+  shape: eosio-error
+  detail: >-
+    Errors return a JSON object { code, message, error: { code, name, what,
+    details:[{ message, file, line_number, method }] } } with the matching HTTP
+    status (commonly 500 for chain assertion failures, 400 for bad requests,
+    404 for unknown routes). Not RFC 9457 problem+json.
+  see: errors/ (not derived — no OpenAPI captured yet)
+rate_limit_signaling:
+  supported: varies-by-node
+  detail: >-
+    Public API is served by independent block-producer / infrastructure nodes;
+    rate limiting and any 429 signaling are per-operator, not a single
+    first-party policy. WAX does not publish a unified rate-limit contract.
+tracing:
+  request_id_header: none-standard
+metadata:
+  detail: Antelope actions carry account/name/authorization/data; no generic metadata envelope.

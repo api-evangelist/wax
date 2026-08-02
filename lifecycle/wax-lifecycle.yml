@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: https://status.wax.io , https://docs.wax.io/ , observed get_info
+notes: >-
+  Lifecycle posture for the WAX blockchain platform. Versioning follows the
+  Antelope chain-api URI scheme; the underlying node software is versioned as
+  the Antelope Spring / WAX build. No formal API deprecation policy or RFC 8594
+  Sunset/Deprecation header program is published for the public RPC surface.
+versioning:
+  scheme: uri-path
+  chain_api: /v1/chain/*
+  history_api: /v1/history/* and Hyperion /v2/*
+  node_software: Antelope Spring (WAX port)
+  observed_server_version: v5.0.1wax01
+  docs: https://docs.wax.io/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: No published API deprecation/sunset policy for the public RPC endpoints.
+sla:
+  url: https://status.wax.io
+  note: >-
+    Uptime published per component on the status page (Mainnet public API nodes,
+    cloud wallet, login API, IDM API, WAX On API, RNG Oracle, block explorer);
+    no contractual SLA is published for public community-run RPC nodes.
+status_page: https://status.wax.io
+status_page_provider: Atlassian Statuspage
+deprecated_operations: []

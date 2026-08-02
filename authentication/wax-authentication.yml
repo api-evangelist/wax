@@ -1,0 +1,39 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.wax.io/ , https://github.com/worldwide-asset-exchange/waxjs
+notes: >-
+  WAX is an Antelope (EOSIO fork) blockchain. There is no OpenAPI in the repo to
+  derive from; this profile is authored from the public docs and the official
+  waxjs SDK. The public Chain/History (Hyperion) RPC read endpoints are
+  unauthenticated; state-changing calls are authorized by client-side
+  cryptographic signatures over the transaction, produced by a user key or via
+  the WAX Cloud Wallet — not by API keys, OAuth, or bearer tokens.
+summary:
+  types: [none, signature]
+  api_key_in: []
+  oauth2_flows: []
+schemes:
+  - name: public-read
+    type: none
+    applies_to: Chain API (/v1/chain/*) and Hyperion History API (/v1/history/*, /v2/*) read endpoints
+    description: >-
+      Read RPC endpoints are public and require no credential. Requests are
+      HTTP POST (or GET for some Hyperion routes) with a JSON body.
+  - name: transaction-signature
+    type: signature
+    scheme: antelope-eosio (secp256k1 / ecc)
+    applies_to: /v1/chain/push_transaction, /v1/chain/send_transaction
+    description: >-
+      State-changing actions must be packed and signed client-side with the
+      account's active/owner key. Signatures are secp256k1 (EOSIO/Antelope
+      "K1"). The WAX Cloud Wallet (all-access.wax.io) brokers signing for users
+      via wax.login()/wax.api.transact() in @waxio/waxjs; self-custody wallets
+      sign locally. The chain verifies the signature against the account's
+      permission/authority, not against a server-issued token.
+  - name: wax-cloud-wallet-sso
+    type: session
+    applies_to: WAX Cloud Wallet login flow
+    description: >-
+      End users authenticate to the WAX Cloud Wallet via email or social SSO at
+      all-access.wax.io; the wallet then signs on their behalf. This is an
+      end-user auth flow, not an API credential a developer provisions.

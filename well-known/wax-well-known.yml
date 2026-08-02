@@ -1,0 +1,28 @@
+generated: '2026-07-21'
+method: searched
+source: live probes 2026-07-21
+notes: >-
+  Probed the /.well-known/ discovery surface on the WAX web + docs hosts. No
+  discovery documents are published (all non-200), so no raw files were saved
+  and no WellKnown/SecurityTxt pointer is emitted. Absence is a valid,
+  recorded result. wax.io returns 301 (redirect to www) for these paths;
+  docs.wax.io returns 404.
+hosts:
+  - host: https://wax.io
+    documents:
+      - {path: /.well-known/security.txt, status: 301}
+      - {path: /.well-known/openid-configuration, status: 301}
+      - {path: /.well-known/oauth-authorization-server, status: 301}
+      - {path: /.well-known/api-catalog, status: 301}
+      - {path: /.well-known/ai-plugin.json, status: 301}
+  - host: https://docs.wax.io
+    documents:
+      - {path: /.well-known/security.txt, status: 404}
+      - {path: /.well-known/openid-configuration, status: 404}
+      - {path: /.well-known/oauth-authorization-server, status: 404}
+      - {path: /.well-known/api-catalog, status: 404}
+      - {path: /.well-known/ai-plugin.json, status: 404}
+  - host: https://developer.wax.io
+    documents:
+      - {path: /.well-known/security.txt, status: 301}
+      - {path: /.well-known/openid-configuration, status: 301}
