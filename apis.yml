@@ -41,6 +41,15 @@ tags:
 - Web3
 - Gaming
 - Antelope
+- Wallets
+tags_raw:
+- Company
+- Crypto
+- Blockchain
+- NFT
+- Web3
+- Gaming
+- Antelope
 - Wallet
 apis:
 - name: WAX Chain API (Antelope RPC)
